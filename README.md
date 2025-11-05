@@ -1,73 +1,87 @@
-# React + TypeScript + Vite
+# 📦 ViaCEP React Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple and elegant React-based project that integrates with the [ViaCEP API](https://viacep.com.br/) to search for Brazilian ZIP codes (CEPs) and automatically fill in address details.
+The interface is built using **[shadcn/ui](https://ui.shadcn.com/)** and **TailwindCSS**, providing a clean and responsive user experience.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Tech Stack
 
-## React Compiler
+* **React (Vite + TypeScript)** — for a fast, modern, and type-safe front-end.
+* **shadcn/ui** — pre-styled, accessible UI components built on top of Radix UI.
+* **TailwindCSS** — utility-first CSS framework for rapid styling.
+* **ViaCEP API** — free public REST API that provides address data for Brazilian ZIP codes.
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+---
 
-## Expanding the ESLint configuration
+## 🧠 What is ViaCEP?
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+[ViaCEP](https://viacep.com.br/) is an open web service that allows developers to fetch address information (such as street, neighborhood, city, and state) by providing a valid Brazilian ZIP code (CEP).
+It’s commonly used to simplify form filling processes and enhance user experience on registration or checkout pages.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🧩 Features
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+* Search address data by CEP (with or without hyphen).
+* Automatic population of address fields (street, neighborhood, city, state).
+* Input validation and error handling.
+* Modern UI design using shadcn components and Tailwind.
+* Responsive layout (works on desktop and mobile).
+
+---
+
+## ⚙️ Installation
+
+Clone the repository and install dependencies:
+
+```bash
+git clone https://github.com/kevinmistrele/Via-Cep-React.git
+cd via-cep-react
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Start the development server:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+The app will be available at [http://localhost:5173](http://localhost:5173)
+
+
+## 🔍 Example API Request
+
+**GET** `https://viacep.com.br/ws/01001000/json/`
+
+**Response:**
+
+```json
+{
+  "cep": "01001-000",
+  "logradouro": "Praça da Sé",
+  "bairro": "Sé",
+  "localidade": "São Paulo",
+  "uf": "SP"
+}
+```
+
+---
+
+## 🪶 Future Improvements
+
+* Add input masking for CEP.
+* Integrate a loading skeleton while fetching data.
+* Option to save address history locally.
+* Dark mode support.
+
+---
+
+## 🧑‍💻 Author
+
+Developed by **Kevin Tavares Mistrele**
+
+
+---
+
+⭐ If you like this project, consider giving it a star on GitHub!
