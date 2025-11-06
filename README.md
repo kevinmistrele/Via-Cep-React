@@ -11,6 +11,7 @@ The interface is built using **[shadcn/ui](https://ui.shadcn.com/)** and **Tailw
 * **shadcn/ui** — pre-styled, accessible UI components built on top of Radix UI.
 * **TailwindCSS** — utility-first CSS framework for rapid styling.
 * **ViaCEP API** — free public REST API that provides address data for Brazilian ZIP codes.
+* **Lucide-React** — Very common to use icons from this library.
 
 ---
 
