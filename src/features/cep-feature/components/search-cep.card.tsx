@@ -4,7 +4,16 @@ import {Label} from "@radix-ui/react-label";
 import {Input} from "@/components/ui/input.tsx";
 import {Button} from "@/components/ui/button.tsx";
 
-export function SearchCepCard() {
+
+// Props type for SearchCepCard component
+type SearchCepCardProps = {
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onSubmit: () => void;
+    inputValue: string;
+    requestingApi: boolean;
+}
+
+export function SearchCepCard({onChange,  onSubmit, inputValue, requestingApi}: SearchCepCardProps) {
     return (
         <>
             <Card className="w-full max-w-md">
@@ -26,13 +35,17 @@ export function SearchCepCard() {
                                         required
                                         id="cep"
                                         placeholder="00000-000"
+                                        maxLength={9}
+                                        name="cep"
                                         type="text"
+                                        value={inputValue}
+                                        onChange={onChange}
                                         className="h-14 w-full text-center font-medium text-gray-600 text-4xl placeholder:text-lg"
                                     />
                                     <p className="text-gray-600 text-sm">Digite 8 dígitos do CEP (com ou sem hífen)</p>
                                 </div>
                                 <div className=" flex flex-col justify-center items-center w-full mt-5">
-                                    <Button size="lg" className="w-sm cursor-pointer text-base">Buscar</Button>
+                                    <Button size="lg" onClick={onSubmit} className="w-sm cursor-pointer text-base">{!requestingApi ? 'Buscar' : 'Carregando'}</Button>
                                 </div>
                             </div>
 
